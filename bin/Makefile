@@ -2,8 +2,8 @@ CC=g++
 
 all: main 
 
-main: add.o sub.o mult.o main.o
-	$(CC) -o main add.o sub.o mult.o main.o
+main: add.o sub.o mult.o div.o main.o
+	$(CC) -o main add.o sub.o mult.o div.o main.o
 
 add.o: ../src/add.cpp
 	$(CC) -o add.o -c ../src/add.cpp -W -Wall
@@ -14,7 +14,10 @@ sub.o: ../src/sub.cpp
 mult.o: ../src/mult.cpp ../include/add.h
 	$(CC) -o mult.o -c ../src/mult.cpp -W -Wall
 
-main.o: ../src/main.cpp ../include/add.h ../include/sub.h ../include/mult.h
+div.o: ../src/div.cpp
+	$(CC) -o div.o -c ../src/div.cpp -W -Wall
+
+main.o: ../src/main.cpp ../include/add.h ../include/sub.h ../include/mult.h ../include/div.h
 	$(CC) -o main.o -c ../src/main.cpp -W -Wall
 
 clean:
